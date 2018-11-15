@@ -1,0 +1,29 @@
+<aura:component controller="SK_GenericTreeGridController">
+	<aura:attribute name="ltngcurrentRecId" type="String" required="true"/>
+    <aura:attribute name="ltngSobjectName" type="String" required="true"/>
+    <aura:attribute name="ltngParentFieldAPIName" type="String" required="true"/>
+    <aura:attribute name="ltngColumnLabelList" type="List" required="true"
+                    description="provide comma seperated values"/>
+    <aura:attribute name="ltngColumnAPINameList" type="List" required="true"
+                    description="provide comma seperated values"/>
+    <aura:attribute name="ltngHyperlinkColumn" type="String"/>
+    
+    <aura:attribute name="items" type="Object"/>
+    <aura:attribute name="gridColumns" type="list" />
+    <aura:attribute name="gridData" type="Object" />
+    <aura:attribute name="gridExpandedRows" type="List" access="PRIVATE" />
+    <aura:attribute name="ltngHeaderValue" type="string" default="Hierarchy Using Lightning Tree Grid"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <div class="slds-grid slds-wrap" style="background-color:#E6E6FA;border-style: solid;margin:2%;padding:2%;">
+        <div class="slds-col slds-size_1-of-1" >
+        	<b>{!v.ltngHeaderValue}</b><br/>
+            <lightning:treeGrid columns="{! v.gridColumns }"
+                data="{! v.gridData }"
+                keyField="Id"
+                expandedRows="{! v.gridExpandedRows}"
+                aura:id="mytree" />
+        </div>	
+        
+    </div>
+</aura:component>
